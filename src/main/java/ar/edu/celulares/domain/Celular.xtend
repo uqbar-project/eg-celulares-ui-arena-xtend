@@ -16,6 +16,14 @@ class Celular extends Entity {
 	@Property Modelo modeloCelular
 	@Property Boolean recibeResumenCuenta = false
 
+	// ********************************************************
+	// ** Getters y setters
+	// Los getters y setters por default no se deben codificar
+	// peeeeeero...
+	// en nuestro ejemplo tenemos que modificar la propiedad
+	// recibeResumenCuenta en base al modelo de celular seleccionado
+	// ********************************************************
+
 	def void setModeloCelular(Modelo unModeloCelular) {
 		// para no entrar en loop infinito, en el setter debemos
 		// utilizar _ para indicar que nos referimos a la variable
