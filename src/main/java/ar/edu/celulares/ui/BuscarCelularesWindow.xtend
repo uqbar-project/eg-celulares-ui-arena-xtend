@@ -136,7 +136,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		new Column<Celular>(table)
 			.setTitle("Recibe resumen de cuenta")
 			.setFixedSize(50)
-			.bindContentsToTransformer [celular | if (celular.recibeResumenCuenta) "SI" else "NO"]
+			.bindContentsToTransformer([celular | if (celular.recibeResumenCuenta) "SI" else "NO"])
 	}
 
 	def void createGridActions(Panel mainPanel) {

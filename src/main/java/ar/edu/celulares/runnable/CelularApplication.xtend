@@ -1,5 +1,7 @@
 package ar.edu.celulares.runnable
 
+import ar.edu.celulares.domain.Celular
+import ar.edu.celulares.domain.Modelo
 import ar.edu.celulares.home.HomeCelulares
 import ar.edu.celulares.home.HomeModelos
 import ar.edu.celulares.ui.BuscarCelularesWindow
@@ -14,8 +16,8 @@ class CelularApplication extends Application {
 	}
 
 	override protected Window<?> createMainWindow() {
-		ApplicationContext.instance.configureSingleton(typeof(HomeModelos), HomeModelos.instance)
-		ApplicationContext.instance.configureSingleton(typeof(HomeCelulares), HomeCelulares.instance)
+		ApplicationContext.instance.configureSingleton(typeof(Modelo), new HomeModelos)
+		ApplicationContext.instance.configureSingleton(typeof(Celular), new HomeCelulares)
 		return new BuscarCelularesWindow(this)
 	}
 }

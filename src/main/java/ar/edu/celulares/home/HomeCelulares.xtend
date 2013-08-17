@@ -10,16 +10,11 @@ import org.uqbar.commons.utils.Observable
 @Observable
 class HomeCelulares extends CollectionBasedHome<Celular> {
 
-	static var HomeCelulares instance
-
-	def static getInstance() {
-		if (instance == null) {
-			instance = new HomeCelulares
-		}
-		instance
+	new() {
+		this.init
 	}
 
-	private new() {
+	def void init() {
 		this.create("Laura Iturbe", 88022202, getModelo("NOKIA LUMIA 625"), false)
 		this.create("Julieta Passerini", 45636453, getModelo("NOKIA ASHA 501"), false)
 		this.create("Debora Fortini", 45610892, getModelo("NOKIA ASHA 501"), true)
@@ -28,7 +23,7 @@ class HomeCelulares extends CollectionBasedHome<Celular> {
 	}
 
 	def getModelo(String modeloDescripcion) {
-		(ApplicationContext.instance.getSingleton(typeof(HomeModelos)) as HomeModelos).get(modeloDescripcion)
+		(ApplicationContext.instance.getSingleton(typeof(Modelo)) as HomeModelos).get(modeloDescripcion)
 	}
 
 	// ********************************************************
@@ -94,12 +89,12 @@ class HomeCelulares extends CollectionBasedHome<Celular> {
 	override def getCriterio(Celular example) {
 		null
 	}
-	
+
 	/**
 	 * Para el proyecto web - se mantiene la busqueda por Identificador
 	 */
 	override def searchById(int id) {
-		allInstances.findFirst [ celular | celular.id.equals(id) ]
+		allInstances.findFirst[celular|celular.id.equals(id)]
 	}
-	
+
 }

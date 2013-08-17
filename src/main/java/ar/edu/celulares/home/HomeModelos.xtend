@@ -9,23 +9,18 @@ import org.uqbar.commons.utils.Observable
 @Observable
 class HomeModelos extends CollectionBasedHome<Modelo> {
 
-	static var instance = new HomeModelos
-	
-	def static HomeModelos getInstance() {
-		if (instance == null) {
-			instance = new HomeModelos()
-		}
-		return instance
+	new() {
+		this.init
 	}
 
-	private new() {
+	def void init() {
 		this.create("NOKIA ASHA 501", 700f, true)
 		this.create("LG OPTIMUS L5 II", 920f, false)
 		this.create("LG OPTIMUS L3 II", 450f, true)
 		this.create("NOKIA LUMIA 625", 350f, true)
 		this.create("MOTOROLA RAZR V3", 350f, false)
 	}
-
+	
 	def void create(String descripcion, float costo, boolean requiereResumenCuenta) {
 		var modelo = new Modelo
 		modelo.descripcion = descripcion

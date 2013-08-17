@@ -62,7 +62,7 @@ class Celular extends Entity {
 	}
 
 	def boolean ingresoNombre() {
-		return !nombre?.trim().equals("")
+		return nombre != null && !nombre.trim().equals("")
 	}
 
 	// ********************************************************
