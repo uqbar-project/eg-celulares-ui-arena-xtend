@@ -52,11 +52,11 @@ class EditarCelularWindow extends Dialog<Celular> {
 	}
 
 	def homeCelulares() {
-		ApplicationContext.instance.getSingleton(typeof(Celular)) as HomeCelulares
+		ApplicationContext::instance.getSingleton(typeof(Celular)) as HomeCelulares
 	}
 
 	def getHomeModelos() {
-		ApplicationContext.instance.getSingleton(typeof(Modelo)) as HomeModelos
+		ApplicationContext::instance.getSingleton(typeof(Modelo)) as HomeModelos
 	}
 
 }

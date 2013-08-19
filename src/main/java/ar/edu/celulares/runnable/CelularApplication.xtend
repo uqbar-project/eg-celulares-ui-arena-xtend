@@ -16,8 +16,8 @@ class CelularApplication extends Application {
 	}
 
 	override protected Window<?> createMainWindow() {
-		ApplicationContext.instance.configureSingleton(typeof(Modelo), new HomeModelos)
-		ApplicationContext.instance.configureSingleton(typeof(Celular), new HomeCelulares)
+		ApplicationContext::instance.configureSingleton(typeof(Modelo), new HomeModelos)
+		ApplicationContext::instance.configureSingleton(typeof(Celular), new HomeCelulares)
 		return new BuscarCelularesWindow(this)
 	}
 }

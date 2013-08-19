@@ -37,7 +37,7 @@ class Celular extends Entity {
 		// idem modeloCelular
 		this._recibeResumenCuenta = siRecibeResumenCuenta
 		// fin comentario _ sobre variable
-		ObservableUtils.firePropertyChanged(this, "habilitaResumenCuenta", !habilitaResumenCuenta)
+		ObservableUtils::firePropertyChanged(this, "habilitaResumenCuenta", !habilitaResumenCuenta)
 	}
 
 	// ********************************************************

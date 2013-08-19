@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>celulares-ui-arena-groovy-maven</artifactId>
+	<artifactId>celulares-ui-arena-xtend</artifactId>
 	<name>celulares-ui-arena-xtend</name>
 	<version>0.0.1-SNAPSHOT</version>
 
@@ -16,17 +16,38 @@
 		<version>1.7</version>
 	</parent>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.uqbar-project</groupId>
 			<artifactId>arena-jface</artifactId>
 			<version>3.3-SNAPSHOT</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.lib</artifactId>
+			<version>2.4.2</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.0</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

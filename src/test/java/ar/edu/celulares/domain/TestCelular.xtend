@@ -1,7 +1,7 @@
 package ar.edu.celulares.domain
 
 import java.math.BigDecimal
-import org.junit.Assert
+import static org.junit.Assert.*;
 import org.junit.Before
 import org.junit.Test
 import org.uqbar.commons.model.UserException
@@ -33,12 +33,12 @@ class TestCelular {
 	
 	@Test
 	def void celularNoRecibeResumenCuenta() {
-		Assert.assertFalse(celularNoResumen.recibeResumenCuenta)
+		assertFalse(celularNoResumen.recibeResumenCuenta)
 	}
 	
 	@Test
 	def void celularSiRecibeResumenCuenta() {
-		Assert.assertTrue(celularSiResumen.recibeResumenCuenta)
+		assertTrue(celularSiResumen.recibeResumenCuenta)
 	}
 	
 	@Test
@@ -46,7 +46,7 @@ class TestCelular {
 		var modeloQueRequiereResumen = new Modelo
 		modeloQueRequiereResumen.requiereResumenCuenta = true
 		celularNoResumen.modeloCelular = modeloQueRequiereResumen
-		Assert.assertTrue(celularNoResumen.recibeResumenCuenta)
+		assertTrue(celularNoResumen.recibeResumenCuenta)
 	}
 	
 	@Test(expected=typeof(UserException))

@@ -23,7 +23,7 @@ class HomeCelulares extends CollectionBasedHome<Celular> {
 	}
 
 	def getModelo(String modeloDescripcion) {
-		(ApplicationContext.instance.getSingleton(typeof(Modelo)) as HomeModelos).get(modeloDescripcion)
+		(ApplicationContext::instance.getSingleton(typeof(Modelo)) as HomeModelos).get(modeloDescripcion)
 	}
 
 	// ********************************************************
