@@ -45,7 +45,7 @@ class HomeCelulares extends CollectionBasedHome<Celular> {
 
 	def void validarClientesDuplicados(Celular celular) {
 		val numero = celular.numero
-		if (!this.search(numero).isEmpty()) {
+		if (!this.search(numero).isEmpty) {
 			throw new UserException("Ya existe un celular con el número: " + numero)
 		}
 	}
