@@ -9,7 +9,7 @@ class CrearCelularWindow extends EditarCelularWindow {
 		super(owner, new Celular)
 	}
 
-	override protected def executeTask() {
+	override def executeTask() {
 		homeCelulares.create(modelObject)
 		super.executeTask()
 	}

@@ -4,6 +4,7 @@ import ar.edu.celulares.domain.Celular
 import ar.edu.celulares.domain.Modelo
 import ar.edu.celulares.home.HomeCelulares
 import ar.edu.celulares.home.HomeModelos
+import com.uqbar.commons.StringUtils
 import org.uqbar.arena.bindings.ObservableProperty
 import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.ColumnLayout
@@ -27,7 +28,10 @@ class EditarCelularWindow extends Dialog<Celular> {
 		var form = new Panel(mainPanel)
 		form.layout = new ColumnLayout(2)
 		new Label(form).text = "Número"
-		new TextBox(form).bindValueToProperty("numero")
+		new TextBox(form)
+			.withFilter [ event | StringUtils::isNumeric(event.potentialTextResult) ]
+			.bindValueToProperty("numero")
+		
 		new Label(form).text = "Nombre del cliente"
 		new TextBox(form).bindValueToProperty("nombre")
 		new Label(form).text = "Modelo del aparato"
