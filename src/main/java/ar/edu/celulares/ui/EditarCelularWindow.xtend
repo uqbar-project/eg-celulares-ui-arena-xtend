@@ -25,7 +25,7 @@ class EditarCelularWindow extends Dialog<Celular> {
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
-		var form = new Panel(mainPanel)
+		val form = new Panel(mainPanel)
 		form.layout = new ColumnLayout(2)
 		new Label(form).text = "Número"
 		new TextBox(form)
@@ -35,13 +35,15 @@ class EditarCelularWindow extends Dialog<Celular> {
 		new Label(form).text = "Nombre del cliente"
 		new TextBox(form).bindValueToProperty("nombre")
 		new Label(form).text = "Modelo del aparato"
-		var selectorModelo = new Selector<Modelo>(form)
+		val selectorModelo = new Selector<Modelo>(form)
 		selectorModelo.allowNull(false)
 		selectorModelo.bindValueToProperty("modeloCelular")
 		var propiedadModelos = selectorModelo.bindItems(new ObservableProperty(homeModelos, "modelos"))
 		propiedadModelos.adapter = new PropertyAdapter(typeof(Modelo), "descripcionEntera")
 		new Label(form).text = "Recibe resumen cuenta en domicilio"
-		new CheckBox(form).bindValueToProperty("recibeResumenCuenta")
+		var checkResumen = new CheckBox(form)
+		checkResumen.bindEnabledToProperty("habilitaResumenCuenta")
+		checkResumen.bindValueToProperty("recibeResumenCuenta")
 	}
 
 	override protected void addActions(Panel actions) {
