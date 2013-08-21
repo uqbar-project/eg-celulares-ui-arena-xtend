@@ -14,7 +14,7 @@ class Modelo extends Entity {
 		descripcion + " ($ " + costo + ")"
 	}
 
-	override def String toString() {
+	override def toString() {
 		descripcionEntera
 	}
 }

@@ -15,7 +15,7 @@ class Celular extends Entity {
 	@Property String nombre
 	@Property Modelo modeloCelular
 	@Property Boolean recibeResumenCuenta = false
-
+	
 	// ********************************************************
 	// ** Getters y setters
 	// Los getters y setters por default no se deben codificar
@@ -31,13 +31,7 @@ class Celular extends Entity {
 		this._modeloCelular = unModeloCelular
 		// fin comentario
 		recibeResumenCuenta = unModeloCelular.requiereResumenCuenta
-	}
-
-	def void setRecibeResumenCuenta(boolean siRecibeResumenCuenta) {
-		// idem modeloCelular
-		this._recibeResumenCuenta = siRecibeResumenCuenta
-		// fin comentario _ sobre variable
-		ObservableUtils::firePropertyChanged(this, "habilitaResumenCuenta", !habilitaResumenCuenta)
+		ObservableUtils::firePropertyChanged(this, "habilitaResumenCuenta", isHabilitaResumenCuenta())
 	}
 
 	// ********************************************************
@@ -46,7 +40,7 @@ class Celular extends Entity {
 	/**
 	 * Valida que el celular esté correctamente cargado
 	 */
-	def void validar() {
+	def validar() {
 		if (numero == null) {
 			throw new UserException("Debe ingresar número")
 		}
@@ -61,22 +55,22 @@ class Celular extends Entity {
 		}
 	}
 
-	def boolean ingresoNombre() {
-		return nombre != null && !nombre.trim().equals("")
+	def ingresoNombre() {
+		 nombre != null && !nombre.trim().equals("")
 	}
 
 	// ********************************************************
 	// ** Getters y setters
 	// ********************************************************
-	def getHabilitaResumenCuenta() {
-		return !modeloCelular.requiereResumenCuenta
+	def isHabilitaResumenCuenta() {
+		 !modeloCelular.requiereResumenCuenta
 	}
-
+	
 	// ********************************************************
 	// ** Misceláneos
 	// ********************************************************
 	override def String toString() {
-		var result = new StringBuffer()
+		var result = new StringBuffer
 		result.append(nombre ?: "Celular sin nombre")
 		if (modeloCelular != null) {
 			result.append(" - " + modeloCelular)
@@ -84,12 +78,8 @@ class Celular extends Entity {
 		if (numero != null) {
 			result.append(" - " + numero)
 		}
-		if (recibeResumenCuenta) {
-			result.append(" - recibe resumen")
-		} else {
-			result.append(" - no recibe resumen")
-		}
-		return result.toString()
+		result.append(if (recibeResumenCuenta) " - recibe resumen" else " - no recibe resumen")
+		result.toString
 	}
 
 }
