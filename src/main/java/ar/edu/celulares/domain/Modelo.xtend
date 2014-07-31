@@ -11,7 +11,7 @@ class Modelo extends Entity {
 	@Property Boolean requiereResumenCuenta // FED: boolean tiene problemas
 
 	def getDescripcionEntera() {
-		descripcion + " ($ " + costo + ")"
+		descripcion.concat(" ($ ").concat(costo.toString).concat(")")
 	}
 
 	override def toString() {
