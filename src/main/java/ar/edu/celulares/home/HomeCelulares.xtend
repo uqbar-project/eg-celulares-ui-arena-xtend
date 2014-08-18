@@ -1,11 +1,14 @@
 package ar.edu.celulares.home
 
 import ar.edu.celulares.domain.Celular
+
 import ar.edu.celulares.domain.Modelo
 import org.uqbar.commons.model.CollectionBasedHome
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.ApplicationContext
 import org.uqbar.commons.utils.Observable
+import org.apache.commons.collections15.Predicate;
+
 
 @Observable
 class HomeCelulares extends CollectionBasedHome<Celular> {
@@ -86,7 +89,7 @@ class HomeCelulares extends CollectionBasedHome<Celular> {
 		new Celular
 	}
 
-	override def getCriterio(Celular example) {
+	override def Predicate<Celular> getCriterio(Celular example) {
 		null
 	}
 

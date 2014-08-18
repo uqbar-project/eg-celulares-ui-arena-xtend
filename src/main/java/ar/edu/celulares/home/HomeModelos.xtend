@@ -5,6 +5,7 @@ import java.math.BigDecimal
 import java.util.List
 import org.uqbar.commons.model.CollectionBasedHome
 import org.uqbar.commons.utils.Observable
+import org.apache.commons.collections15.Predicate;
 
 @Observable
 class HomeModelos extends CollectionBasedHome<Modelo> {
@@ -45,7 +46,7 @@ class HomeModelos extends CollectionBasedHome<Modelo> {
 		new Modelo()
 	}
 
-	override def getCriterio(Modelo example) {
+	override def Predicate<Modelo> getCriterio(Modelo example) {
 		null
 	}
 	
