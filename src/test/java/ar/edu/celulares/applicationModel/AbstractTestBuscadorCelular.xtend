@@ -13,7 +13,7 @@ class AbstractTestBuscadorCelular {
 	def void init() {
 		searcher = new BuscadorCelular
 		searcher.nombre = "Dodi"
-		ApplicationContext::instance.configureSingleton(typeof(Modelo), new HomeModelos)
+		ApplicationContext.instance.configureSingleton(typeof(Modelo), new HomeModelos)
 	}
 
 }

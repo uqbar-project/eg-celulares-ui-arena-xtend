@@ -108,6 +108,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		table.bindItemsToProperty("resultados")
 		table.bindValueToProperty("celularSeleccionado")
 		this.describeResultsGrid(table)
+
 	}
 
 	/**

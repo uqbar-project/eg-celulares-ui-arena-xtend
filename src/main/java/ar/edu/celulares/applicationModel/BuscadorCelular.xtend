@@ -55,7 +55,7 @@ class BuscadorCelular implements Serializable {
 	}
 
 	def HomeCelulares getHomeCelulares() {
-		ApplicationContext::instance.getSingleton(typeof(Celular))
+		ApplicationContext.instance.getSingleton(typeof(Celular))
 	}
 
 }

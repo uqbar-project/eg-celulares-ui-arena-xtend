@@ -22,13 +22,13 @@ class TestBuscadorCelular extends AbstractTestBuscadorCelular {
 	@Test
 	def void buscarSinResultados() {
 		buscadorFallido.search
-		Assert::assertEquals(0, buscadorFallido.resultados.size)
+		Assert.assertEquals(0, buscadorFallido.resultados.size)
 	}
 	
 	@Test
 	def void buscarDodinos() {
 		searcher.search
-		Assert::assertEquals(2, searcher.resultados.size)
+		Assert.assertEquals(2, searcher.resultados.size)
 	}
 
 	@Test
