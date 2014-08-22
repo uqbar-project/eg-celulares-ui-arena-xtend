@@ -6,7 +6,7 @@ import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
 
 @Observable
-class Celular extends Entity {
+class Celular extends Entity implements Cloneable {
 
 	final int MAX_NUMERO = 100000
 
@@ -82,4 +82,15 @@ class Celular extends Entity {
 		result.toString
 	}
 
+	override clone() {
+		super.clone()
+	}
+	
+	def copiarA(Celular destino) {
+		destino.numero = this.numero
+		destino.nombre = this.nombre
+		destino.recibeResumenCuenta = this.recibeResumenCuenta
+		destino.modeloCelular = this.modeloCelular
+	}
+	
 }

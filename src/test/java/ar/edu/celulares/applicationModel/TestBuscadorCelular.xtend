@@ -16,7 +16,7 @@ class TestBuscadorCelular extends AbstractTestBuscadorCelular {
 		super.init()
 		buscadorFallido = new BuscadorCelular
 		buscadorFallido.nombre = "XXXX"
-		ApplicationContext::instance.configureSingleton(typeof(Celular), new HomeCelulares)
+		ApplicationContext.instance.configureSingleton(typeof(Celular), new HomeCelulares)
 	}
 
 	@Test
@@ -35,7 +35,7 @@ class TestBuscadorCelular extends AbstractTestBuscadorCelular {
 	def void buscarDodinosConNumeroErroneo() {
 		searcher.numero = 17715274
 		searcher.search
-		Assert::assertEquals(0, searcher.resultados.size)
+		Assert.assertEquals(0, searcher.resultados.size)
 	}
 
 }

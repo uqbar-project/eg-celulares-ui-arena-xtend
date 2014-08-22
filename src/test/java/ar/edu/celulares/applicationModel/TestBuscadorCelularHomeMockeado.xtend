@@ -12,7 +12,7 @@ class TestBuscadorCelularHomeMockeado extends AbstractTestBuscadorCelular {
 	@Before
 	override void init() {
 		super.init()
-		ApplicationContext::instance.configureSingleton(typeof(Celular), new MockHomeCelulares)
+		ApplicationContext.instance.configureSingleton(typeof(Celular), new MockHomeCelulares)
 	}
 
 	@Test
@@ -26,7 +26,7 @@ class TestBuscadorCelularHomeMockeado extends AbstractTestBuscadorCelular {
 		var buscadorRicardoRuben = new BuscadorCelular
 		buscadorRicardoRuben.nombre = "Ricardo"
 		buscadorRicardoRuben.search
-		Assert::assertEquals(1, buscadorRicardoRuben.resultados.size)
+		Assert.assertEquals(1, buscadorRicardoRuben.resultados.size)
 	}
 
 }

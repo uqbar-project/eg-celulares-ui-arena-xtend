@@ -4,7 +4,6 @@ import ar.edu.celulares.domain.Celular
 import ar.edu.celulares.domain.Modelo
 import ar.edu.celulares.home.HomeCelulares
 import ar.edu.celulares.home.HomeModelos
-import com.uqbar.commons.StringUtils
 import org.uqbar.arena.bindings.ObservableProperty
 import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.ColumnLayout
@@ -20,8 +19,11 @@ import org.uqbar.commons.utils.ApplicationContext
 
 class EditarCelularWindow extends Dialog<Celular> {
 
+	Celular original
+	
 	new(WindowOwner owner, Celular model) {
 		super(owner, model)
+		original = model.clone() as Celular
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
@@ -29,7 +31,7 @@ class EditarCelularWindow extends Dialog<Celular> {
 		form.layout = new ColumnLayout(2)
 		new Label(form).text = "Número"
 		new TextBox(form)
-			.withFilter [ event | StringUtils::isNumeric(event.potentialTextResult) ]
+			//.withFilter [ event | StringUtils::isNumeric(event.potentialTextResult) ]
 			.bindValueToProperty("numero")
 		
 		new Label(form).text = "Nombre del cliente"
@@ -54,11 +56,14 @@ class EditarCelularWindow extends Dialog<Celular> {
 
 		new Button(actions) //
 			.setCaption("Cancelar")
-			.onClick [|this.cancel]
+			.onClick [|
+				original.copiarA(this.modelObject)
+				this.cancel
+			]
 	}
 
-	def homeCelulares() {
-		ApplicationContext::instance.getSingleton(typeof(Celular)) as HomeCelulares
+	def getHomeCelulares() {
+		ApplicationContext.instance.getSingleton(typeof(Celular)) as HomeCelulares
 	}
 
 	def getHomeModelos() {
