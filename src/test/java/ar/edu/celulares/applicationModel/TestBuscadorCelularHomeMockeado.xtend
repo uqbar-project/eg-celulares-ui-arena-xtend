@@ -18,7 +18,7 @@ class TestBuscadorCelularHomeMockeado extends AbstractTestBuscadorCelular {
 	@Test
 	def void buscarDodinosEnMockHome() {
 		searcher.search
-		Assert::assertEquals(0, searcher.resultados.size)
+		Assert.assertEquals(0, searcher.resultados.size)
 	}
 
 	@Test

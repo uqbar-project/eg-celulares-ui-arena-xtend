@@ -55,15 +55,17 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		var searchFormPanel = new Panel(mainPanel)
 		searchFormPanel.setLayout(new ColumnLayout(2))
 
-		var labelNumero = new Label(searchFormPanel)
-		labelNumero.text = "Número"
-		labelNumero.foreground = Color::BLUE
+		new Label(searchFormPanel) => [
+			text = "Número"
+			foreground = Color.BLUE
+		]
 
 		new TextBox(searchFormPanel).bindValueToProperty("numero")
 
-		var labelNombre = new Label(searchFormPanel)
-		labelNombre.text = "Nombre del cliente"
-		labelNombre.foreground = Color::BLUE
+		new Label(searchFormPanel) => [
+			text = "Nombre del cliente"
+			foreground = Color.BLUE
+		]
 
 		new TextBox(searchFormPanel).bindValueToProperty("nombre")
 	}
@@ -78,19 +80,13 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 *
 	 */
 	override protected addActions(Panel actionsPanel) {
-		new Button(actionsPanel)
-			.setCaption("Buscar")
-			.onClick [ | modelObject.search ] 
-			.setAsDefault
-			.disableOnError
+		new Button(actionsPanel).setCaption("Buscar").onClick[|modelObject.search].setAsDefault.disableOnError
 
 		new Button(actionsPanel) //
-			.setCaption("Limpiar")
-			.onClick [ | modelObject.clear ]
+		.setCaption("Limpiar").onClick[|modelObject.clear]
 
 		new Button(actionsPanel) //
-			.setCaption("Nuevo Celular")
-			.onClick [ | this.crearCelular ]
+		.setCaption("Nuevo Celular").onClick[|this.crearCelular]
 	}
 
 	// *************************************************************************
@@ -102,13 +98,13 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * dispara la notificación a la grilla que funciona como Observer
 	 */
 	def protected createResultsGrid(Panel mainPanel) {
-		var table = new Table<Celular>(mainPanel, typeof(Celular))
-		table.heigth = 200
-		table.width = 450
-		table.bindItemsToProperty("resultados")
-		table.bindValueToProperty("celularSeleccionado")
+		var table = new Table<Celular>(mainPanel, typeof(Celular)) => [
+			height = 400
+			width = 650
+			bindItemsToProperty("resultados")
+			bindValueToProperty("celularSeleccionado")
+		]
 		this.describeResultsGrid(table)
-
 	}
 
 	/**
@@ -120,37 +116,24 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 */
 	def void describeResultsGrid(Table<Celular> table) {
 		new Column<Celular>(table) //
-			.setTitle("Nombre")
-			.setFixedSize(150)
-			.bindContentsToProperty("nombre")
+		.setTitle("Nombre").setFixedSize(150).bindContentsToProperty("nombre")
 
 		new Column<Celular>(table) //
-			.setTitle("Número")
-			.setFixedSize(100)
-			.bindContentsToProperty("numero")
+		.setTitle("Número").setFixedSize(100).bindContentsToProperty("numero")
 
-		new Column<Celular>(table)
-			.setTitle("Modelo")
-			.setFixedSize(150)
-			.bindContentsToProperty("modeloCelular")
+		new Column<Celular>(table).setTitle("Modelo").setFixedSize(150).bindContentsToProperty("modeloCelular")
 
-		new Column<Celular>(table)
-			.setTitle("Recibe resumen de cuenta")
-			.setFixedSize(50)
-			.bindContentsToTransformer([celular | if (celular.recibeResumenCuenta) "SI" else "NO"])
+		new Column<Celular>(table).setTitle("Recibe resumen de cuenta").setFixedSize(50).
+			bindContentsToTransformer([celular|if(celular.recibeResumenCuenta) "SI" else "NO"])
 	}
 
 	def void createGridActions(Panel mainPanel) {
 		var actionsPanel = new Panel(mainPanel)
 		actionsPanel.setLayout(new HorizontalLayout)
-		var edit = new Button(actionsPanel)
-			.setCaption("Editar")
-			.onClick [ | this.modificarCelular]
+		var edit = new Button(actionsPanel).setCaption("Editar").onClick[|this.modificarCelular]
 
-		var remove = new Button(actionsPanel)
-			.setCaption("Borrar")
-			.onClick [ | modelObject.eliminarCelularSeleccionado]
- 
+		var remove = new Button(actionsPanel).setCaption("Borrar").onClick[|modelObject.eliminarCelularSeleccionado]
+
 		// Deshabilitar los botones si no hay ningún elemento seleccionado en la grilla.
 		var elementSelected = new NotNullObservable("celularSeleccionado")
 		remove.bindEnabled(elementSelected)

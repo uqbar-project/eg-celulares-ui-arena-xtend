@@ -31,7 +31,7 @@ class EditarCelularWindow extends Dialog<Celular> {
 		form.layout = new ColumnLayout(2)
 		new Label(form).text = "Número"
 		new TextBox(form)
-			//.withFilter [ event | StringUtils::isNumeric(event.potentialTextResult) ]
+			//.withFilter [ event | StringUtils.isNumeric(event.potentialTextResult) ]
 			.bindValueToProperty("numero")
 		
 		new Label(form).text = "Nombre del cliente"
@@ -67,7 +67,7 @@ class EditarCelularWindow extends Dialog<Celular> {
 	}
 
 	def getHomeModelos() {
-		ApplicationContext::instance.getSingleton(typeof(Modelo)) as HomeModelos
+		ApplicationContext.instance.getSingleton(typeof(Modelo)) as HomeModelos
 	}
 
 }
