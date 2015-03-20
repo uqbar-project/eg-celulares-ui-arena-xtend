@@ -21,8 +21,13 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 
 	new(WindowOwner owner, Celular model) {
 		super(owner, model)
+		title = defaultTitle
 	}
 
+	def defaultTitle() {
+		"Cambio de datos del cliente"
+	}
+	
 	override protected createFormPanel(Panel mainPanel) {
 		val form = new Panel(mainPanel).layout = new ColumnLayout(2)
 		 

@@ -8,5 +8,9 @@ class CrearCelularWindow extends EditarCelularWindow {
 	new(WindowOwner owner) {
 		super(owner, new Celular)
 	}
+	
+	override defaultTitle() {
+		"Alta de un nuevo cliente"
+	}
 
 }
