@@ -36,7 +36,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * de esa búsqueda
 	 */
 	override def createMainTemplate(Panel mainPanel) {
-		title = "Buscador de Celulares"
+		title = "Buscador de Clientes"
 		taskDescription = "Ingrese los parámetros de búsqueda"
 
 		super.createMainTemplate(mainPanel)
