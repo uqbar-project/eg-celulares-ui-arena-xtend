@@ -137,13 +137,13 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		new Column<Celular>(table) => [
 			title = "Modelo"
 			fixedSize = 200
-			bindContentsToProperty("modeloCelular")
+			bindContentsToProperty("Celular")
 		]
 
 		new Column<Celular>(table) => [
 			title = "Recibe resumen de cuenta"
 			fixedSize = 50
-			bindContentsToTransformer = [ celular | if (celular.recibeResumenCuenta) "SI" else "NO"]  
+			bindContentsToProperty("recibeResumenCuenta").transformer = [ recibe | if (recibe) "SI" else "NO"]  
 		]
 	}
 
