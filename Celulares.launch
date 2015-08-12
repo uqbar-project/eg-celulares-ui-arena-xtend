@@ -2,7 +2,7 @@
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <stringAttribute key="bad_container_name" value="Celulares"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/celulares-ui-arena-xtend/src/main/generated-sources/xtend-gen/ar/edu/celulares/runnable/CelularApplication.java"/>
+<listEntry value="/celulares-ui-arena-xtend/src/main/generated-sources/xtend/ar/edu/celulares/runnable/CelularApplication.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
