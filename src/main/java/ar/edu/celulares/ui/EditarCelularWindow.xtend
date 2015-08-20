@@ -14,6 +14,8 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.widgets.TextFilter
+import org.uqbar.arena.widgets.TextInputEvent
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.commons.utils.ApplicationContext
 
@@ -35,6 +37,7 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 		new TextBox(form) => [
 			bindValueToProperty("numero")
 			width = 100
+			withFilter(new NumeroFilter)
 		]
 			
 		new Label(form).text = "Nombre del cliente"
@@ -89,6 +92,14 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 			homeCelulares.update(modelObject)
 		}
 		super.executeTask()
+	}
+	
+}
+
+class NumeroFilter implements TextFilter {
+	
+	override accept(TextInputEvent event) {
+		event.potentialTextResult.matches("[0-9,.]*")
 	}
 	
 }
