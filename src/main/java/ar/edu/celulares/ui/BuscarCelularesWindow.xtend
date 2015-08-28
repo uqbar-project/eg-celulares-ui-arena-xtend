@@ -143,7 +143,16 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		new Column<Celular>(table) => [
 			title = "Recibe resumen de cuenta"
 			fixedSize = 50
-			bindContentsToTransformer = [ celular | if (celular.recibeResumenCuenta) "SI" else "NO"]  
+			bindContentsToTransformer = 
+			 [ celular | 
+			 	if (celular.recibeResumenCuenta) "SI" else "NO"
+			 ]
+//			bindContentsToProperty("recibeResumenCuenta").transformer =
+//			    [ String recibe |
+//			    	if (recibe.equals("true")) "SI" else "NO"
+//			    ]
+			bindBackground("recibeResumenCuenta").transformer =
+				[ Object recibe | if (recibe as Boolean) Color.GREEN else Color.RED ]
 		]
 	}
 
