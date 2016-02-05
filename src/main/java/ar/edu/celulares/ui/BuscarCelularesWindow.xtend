@@ -8,6 +8,7 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.NumericField
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.tables.Column
@@ -15,6 +16,7 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 /**
  * Ventana de búsqueda de celulares.
@@ -52,22 +54,30 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * El panel principal de búsuqeda permite filtrar por número o nombre
 	 */
 	override def void createFormPanel(Panel mainPanel) {
-		val searchFormPanel = new Panel(mainPanel)
-		searchFormPanel.setLayout(new ColumnLayout(2))
+		val searchFormPanel = new Panel(mainPanel) => [
+			bindContentsToProperty("example")
+			layout = new ColumnLayout(2)
+		]
 
 		new Label(searchFormPanel) => [
 			text = "Número"
 			foreground = Color.BLUE
 		]
 
-		new TextBox(searchFormPanel).bindValueToProperty("numero")
+		new NumericField(searchFormPanel) => [
+			value <=> "numero"
+			width = 200
+		]
 
 		new Label(searchFormPanel) => [
 			text = "Nombre del cliente"
 			foreground = Color.BLUE
 		]
 
-		new TextBox(searchFormPanel).bindValueToProperty("nombre")
+		new TextBox(searchFormPanel) => [
+			bindValueToProperty("nombre")
+			width = 200
+		]
 	}
 
 	/**
@@ -108,8 +118,8 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 */
 	def protected createResultsGrid(Panel mainPanel) {
 		val table = new Table<Celular>(mainPanel, typeof(Celular)) => [
-			bindItemsToProperty("resultados")
-			bindValueToProperty("celularSeleccionado")
+			items <=> "resultados"
+			value <=> "celularSeleccionado"
 		]
 		this.describeResultsGrid(table)
 	}
@@ -143,14 +153,10 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		new Column<Celular>(table) => [
 			title = "Recibe resumen de cuenta"
 			fixedSize = 50
-			bindContentsToTransformer = 
-			 [ celular | 
-			 	if (celular.recibeResumenCuenta) "SI" else "NO"
+			bindContentsToProperty("recibeResumenCuenta").transformer = 
+			 [ Boolean recibe | 
+			 	if (recibe) "SI" else "NO"
 			 ]
-//			bindContentsToProperty("recibeResumenCuenta").transformer =
-//			    [ String recibe |
-//			    	if (recibe.equals("true")) "SI" else "NO"
-//			    ]
 			bindBackground("recibeResumenCuenta").transformer =
 				[ Object recibe | if (recibe as Boolean) Color.GREEN else Color.RED ]
 		]
