@@ -55,7 +55,6 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 */
 	override def void createFormPanel(Panel mainPanel) {
 		val searchFormPanel = new Panel(mainPanel) => [
-			bindContentsToProperty("example")
 			layout = new ColumnLayout(2)
 		]
 
@@ -65,7 +64,11 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		]
 
 		new NumericField(searchFormPanel) => [
-			value <=> "numero"
+			// tip: de esta manera se registra el binding
+			// anidado y se disparan notificaciones,
+			// si al searchFormPanel se le asigna como modelo
+			// el objeto example no se disparan 
+			value <=> "example.numero"
 			width = 200
 		]
 
@@ -75,7 +78,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		]
 
 		new TextBox(searchFormPanel) => [
-			bindValueToProperty("nombre")
+			bindValueToProperty("example.nombre")
 			width = 200
 		]
 	}
