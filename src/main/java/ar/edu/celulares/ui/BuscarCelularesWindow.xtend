@@ -161,7 +161,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 			 	if (recibe) "SI" else "NO"
 			 ]
 			bindBackground("recibeResumenCuenta").transformer =
-				[ Object recibe | if (recibe as Boolean) Color.GREEN else Color.RED ]
+				[ Boolean recibe | if (recibe) Color.GREEN else Color.RED ]
 		]
 	}
 
