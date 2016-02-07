@@ -32,11 +32,14 @@ class CelularesBootstrap extends CollectionBasedBootstrap {
 		val nokiaLumia = repoModelos.create("NOKIA LUMIA 625", 350f, true)
 		repoModelos.create("MOTOROLA RAZR V3", 350f, false)
 
-		repoCelulares.create("Laura Iturbe", 88022202, nokiaLumia, false)
-		repoCelulares.create("Julieta Passerini", 45636453, nokiaAsha, false)
-		repoCelulares.create("Debora Fortini", 45610892, nokiaAsha, true)
-		repoCelulares.create("Chiara Dodino", 68026976, nokiaAsha, false)
-		repoCelulares.create("Melina Dodino", 40989911, lgOptimusL5, true)
+		repoCelulares => [
+			create("Laura Iturbe", 88022202, nokiaLumia, false)
+			create("Julieta Passerini", 45636453, nokiaAsha, false)
+			create("Debora Fortini", 45610892, nokiaAsha, true)
+			create("Chiara Dodino", 68026976, nokiaAsha, false)
+			create("Melina Dodino", 40989911, lgOptimusL5, true)
+		]
+		
 	}
 
 }
