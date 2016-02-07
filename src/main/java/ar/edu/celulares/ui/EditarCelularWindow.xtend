@@ -88,16 +88,19 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 	}
 
 	override protected void addActions(Panel actions) {
-		new Button(actions)
-			.setCaption("Aceptar")
-			.onClick [|this.accept]
-			.setAsDefault.disableOnError
+		new Button(actions) => [
+			caption = "Aceptar"
+			onClick [|this.accept]
+			setAsDefault
+			disableOnError	
+		]
 
-		new Button(actions) //
-			.setCaption("Cancelar")
-			.onClick [|
+		new Button(actions) => [
+			caption = "Cancelar"	
+			onClick [|
 				this.cancel
 			]
+		]
 	}
 
 	def getRepoCelulares() {
