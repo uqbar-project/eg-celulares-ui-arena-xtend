@@ -78,7 +78,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		]
 
 		new TextBox(searchFormPanel) => [
-			bindValueToProperty("example.nombre")
+			value <=> "example.nombre"
 			width = 200
 		]
 	}

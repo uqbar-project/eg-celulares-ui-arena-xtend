@@ -66,7 +66,7 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 		 */
 		new Selector<Modelo>(form) => [
 			allowNull(false)
-			bindValueToProperty("modeloCelular")
+			value <=> "modeloCelular"
 			val propiedadModelos = bindItems(new ObservableProperty(repoModelos, "modelos"))
 			propiedadModelos.adaptWith(typeof(Modelo), "descripcionEntera") // opción A
 			//propiedadModelos.adapter = new PropertyAdapter(typeof(Modelo), "descripcionEntera") // opción B
