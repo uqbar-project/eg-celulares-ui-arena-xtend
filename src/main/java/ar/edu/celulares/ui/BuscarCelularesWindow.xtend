@@ -95,19 +95,19 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	override protected addActions(Panel actionsPanel) {
 		new Button(actionsPanel) => [
 			caption = "Buscar"
-			onClick = [|modelObject.search]
+			onClick([|modelObject.search])
 			setAsDefault
 			disableOnError
 		]
 
 		new Button(actionsPanel) => [
 			caption = "Limpiar"
-			onClick = [|modelObject.clear]
+			onClick([|modelObject.clear])
 		]
 
 		new Button(actionsPanel) => [
 			caption = "Nuevo Celular"
-			onClick = [|this.crearCelular]
+			onClick([|this.crearCelular])
 		]
 	}
 
@@ -173,13 +173,13 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		
 		new Button(actionsPanel) => [
 			caption = "Editar"
-			onClick = [|this.modificarCelular]
+			onClick([|this.modificarCelular])
 			bindEnabled(elementSelected)
 		]
 
 		new Button(actionsPanel) => [
 			caption = "Borrar"
-			onClick = [|modelObject.eliminarCelularSeleccionado]
+			onClick([|modelObject.eliminarCelularSeleccionado])
 			bindEnabled(elementSelected)
 		]
 	}
