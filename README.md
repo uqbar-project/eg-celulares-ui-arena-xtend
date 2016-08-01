@@ -1,6 +1,6 @@
 # Celulares
 
-Ejemplo de un A-B-M (Alta-Baja-Modificación) completo.
+Ejemplo de un A-B-M (Alta-Baja-Modificación) completo de una lista de clientes de una compañía de telefonía celular
 
 ## Conceptos a ver
 
