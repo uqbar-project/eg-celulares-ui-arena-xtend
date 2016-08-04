@@ -88,8 +88,8 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * la acción que se dispara cuando el usuario presiona click Para que el binding sea flexible necesito
 	 * decirle objeto al que disparo la acción y el mensaje a enviarle Contra: estoy atado a tener métodos sin
 	 * parámetros. Eso me impide poder pasarle parámetros como en el caso del alta/modificación.
-	 * Buscar/Limpiar -> son acciones que resuelve el modelo (BuscadorCelular) Nuevo -> necesita disparar una
-	 * pantalla de alta, entonces lo resuelve la vista (this)
+	 * Buscar/Limpiar: son acciones que resuelve el modelo (BuscadorCelular) 
+	 * Nuevo: necesita disparar una pantalla de alta, entonces lo resuelve la vista (this)
 	 *
 	 */
 	override protected addActions(Panel actionsPanel) {
@@ -116,7 +116,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	// *************************************************************************
 	/**
 	 * Se crea la grilla en el panel de abajo El binding es: el contenido de la grilla en base a los
-	 * resultados de la búsqueda Cuando el usuario presiona Buscar, se actualiza el model, y éste a su vez
+	 * resultados de la búsqueda: cuando el usuario presiona Buscar, se actualiza el model, y éste a su vez
 	 * dispara la notificación a la grilla que funciona como Observer
 	 */
 	def protected createResultsGrid(Panel mainPanel) {
@@ -132,7 +132,6 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * en el caso del número o el nombre 2) contra un transformer que recibe el model y devuelve un tipo
 	 * (generalmente String), como en el caso de Recibe Resumen de Cuenta
 	 *
-	 * @param table
 	 */
 	def void describeResultsGrid(Table<Celular> table) {
 		new Column<Celular>(table) => [
