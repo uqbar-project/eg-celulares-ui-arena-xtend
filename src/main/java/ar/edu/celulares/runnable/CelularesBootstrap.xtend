@@ -5,7 +5,7 @@ import ar.edu.celulares.domain.Modelo
 import ar.edu.celulares.repo.RepoCelulares
 import ar.edu.celulares.repo.RepoModelos
 import org.uqbar.arena.bootstrap.CollectionBasedBootstrap
-import org.uqbar.commons.utils.ApplicationContext
+import org.uqbar.commons.applicationContext.ApplicationContext
 
 class CelularesBootstrap extends CollectionBasedBootstrap {
 

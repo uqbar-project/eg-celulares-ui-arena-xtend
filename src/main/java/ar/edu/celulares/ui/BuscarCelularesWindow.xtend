@@ -16,6 +16,7 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 /**
@@ -123,6 +124,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		val table = new Table<Celular>(mainPanel, typeof(Celular)) => [
 			items <=> "resultados"
 			value <=> "celularSeleccionado"
+			numberVisibleRows = 8
 		]
 		this.describeResultsGrid(table)
 	}
@@ -143,6 +145,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 		new Column<Celular>(table) => [
 			title = "Número"
 			fixedSize = 100
+			alignRight
 			bindContentsToProperty("numero")
 		]
 
