@@ -2,7 +2,6 @@ package ar.edu.celulares.ui
 
 import ar.edu.celulares.domain.Celular
 import ar.edu.celulares.domain.Modelo
-import ar.edu.celulares.repo.RepoCelulares
 import ar.edu.celulares.repo.RepoModelos
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.bindings.ObservableProperty
@@ -103,21 +102,8 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 		]
 	}
 
-	def getRepoCelulares() {
-		ApplicationContext.instance.getSingleton(typeof(Celular)) as RepoCelulares
-	}
-
 	def getRepoModelos() {
 		ApplicationContext.instance.getSingleton(typeof(Modelo)) as RepoModelos
-	}
-
-	override executeTask() {
-		if (modelObject.isNew) {
-			repoCelulares.create(modelObject)
-		} else {
-			repoCelulares.update(modelObject)
-		}
-		super.executeTask()
 	}
 	
 }

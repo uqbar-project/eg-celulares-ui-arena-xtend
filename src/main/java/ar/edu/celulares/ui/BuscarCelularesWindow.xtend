@@ -13,7 +13,6 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
-import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
@@ -31,6 +30,8 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	new(WindowOwner parent) {
 		super(parent, new BuscadorCelular)
 		modelObject.search()
+		title = "Buscador de Clientes"
+		taskDescription = "Ingrese los parámetros de búsqueda"
 	}
 
 	/**
@@ -39,9 +40,6 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * de esa búsqueda
 	 */
 	override def createMainTemplate(Panel mainPanel) {
-		title = "Buscador de Clientes"
-		taskDescription = "Ingrese los parámetros de búsqueda"
-
 		super.createMainTemplate(mainPanel)
 
 		this.createResultsGrid(mainPanel)
@@ -190,16 +188,17 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	// ** Acciones
 	// ********************************************************
 	def void crearCelular() {
-		this.openDialog(new CrearCelularWindow(this))
+		val celular = new Celular
+		new CrearCelularWindow(this, celular) => [
+			onAccept[this.modelObject.crearCelular(celular)]
+			open
+		]
 	}
 
 	def void modificarCelular() {
-		this.openDialog(new EditarCelularWindow(this, modelObject.celularSeleccionado))
+		new EditarCelularWindow(this, modelObject.celularSeleccionado) => [
+			onAccept[this.modelObject.actualizarSeleccionado()]
+			open
+		]
 	}
-
-	def openDialog(Dialog<?> dialog) {
-		dialog.onAccept[|modelObject.search]
-		dialog.open
-	}
-
 }
