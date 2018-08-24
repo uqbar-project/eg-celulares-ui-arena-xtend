@@ -62,7 +62,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 			foreground = Color.BLUE
 		]
 
-		new NumericField(searchFormPanel) => [
+		new NumericField(searchFormPanel, false) => [
 			// tip: de esta manera se registra el binding
 			// anidado y se disparan notificaciones,
 			// si al searchFormPanel se le asigna como modelo
@@ -197,11 +197,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 
 	def void modificarCelular() {
 		new EditarCelularWindow(this, modelObject.celularSeleccionado) => [
-			onAccept[
-				this.modelObject.actualizarSeleccionado()
-				this.modelObject.clear()
-				this.modelObject.search()
-			]
+			onAccept[this.modelObject.actualizarSeleccionado()]
 			open
 		]
 	}

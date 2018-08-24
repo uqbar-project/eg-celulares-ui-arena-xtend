@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>org.uqbar-project</groupId>
 			<artifactId>celulares-domain-xtend</artifactId>
-			<version>1.0.6</version>
+			<version>1.0.7</version>
 		</dependency>
 	</dependencies>
 
