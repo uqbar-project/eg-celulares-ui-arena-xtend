@@ -10,8 +10,8 @@ import org.uqbar.commons.applicationContext.ApplicationContext
 class CelularesBootstrap extends CollectionBasedBootstrap {
 
 	new() {
-		ApplicationContext.instance.configureSingleton(typeof(Modelo), new RepoModelos)
-		ApplicationContext.instance.configureSingleton(typeof(Celular), new RepoCelulares)
+		ApplicationContext.instance.configureSingleton(Modelo, new RepoModelos)
+		ApplicationContext.instance.configureSingleton(Celular, new RepoCelulares)
 	}
 
 	/**
@@ -23,8 +23,8 @@ class CelularesBootstrap extends CollectionBasedBootstrap {
 	 * 
 	 */
 	override run() {
-		val repoModelos = ApplicationContext.instance.getSingleton(typeof(Modelo)) as RepoModelos
-		val repoCelulares = ApplicationContext.instance.getSingleton(typeof(Celular)) as RepoCelulares
+		val repoModelos = ApplicationContext.instance.getSingleton(Modelo) as RepoModelos
+		val repoCelulares = ApplicationContext.instance.getSingleton(Celular) as RepoCelulares
 
 		val nokiaAsha = repoModelos.create("NOKIA ASHA 501", 700f, true)
 		val lgOptimusL5 = repoModelos.create("LG OPTIMUS L5 II", 920f, false)

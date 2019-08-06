@@ -39,7 +39,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * le agregamos una grilla con los resultados de esa búsqueda y acciones que pueden hacerse con elementos
 	 * de esa búsqueda
 	 */
-	override def createMainTemplate(Panel mainPanel) {
+	override createMainTemplate(Panel mainPanel) {
 		super.createMainTemplate(mainPanel)
 
 		this.createResultsGrid(mainPanel)
@@ -52,7 +52,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	/**
 	 * El panel principal de búsuqeda permite filtrar por número o nombre
 	 */
-	override def void createFormPanel(Panel mainPanel) {
+	override void createFormPanel(Panel mainPanel) {
 		val searchFormPanel = new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 		]
@@ -119,7 +119,7 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 	 * dispara la notificación a la grilla que funciona como Observer
 	 */
 	def protected createResultsGrid(Panel mainPanel) {
-		val table = new Table<Celular>(mainPanel, typeof(Celular)) => [
+		val table = new Table<Celular>(mainPanel, Celular) => [
 			items <=> "resultados"
 			value <=> "celularSeleccionado"
 			numberVisibleRows = 8

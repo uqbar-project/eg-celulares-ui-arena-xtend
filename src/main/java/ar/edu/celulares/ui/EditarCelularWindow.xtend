@@ -67,8 +67,8 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 			allowNull(false)
 			value <=> "modeloCelular"
 			val propiedadModelos = bindItems(new ObservableProperty(repoModelos, "modelos"))
-			propiedadModelos.adaptWith(typeof(Modelo), "descripcionEntera") // opción A
-			//propiedadModelos.adapter = new PropertyAdapter(typeof(Modelo), "descripcionEntera") // opción B
+			propiedadModelos.adaptWith(Modelo, "descripcionEntera") // opción A
+			//propiedadModelos.adapter = new PropertyAdapter(Modelo, "descripcionEntera") // opción B
 		]
 		
 		new Label(form).text = "Recibe resumen cuenta en domicilio"
@@ -103,7 +103,7 @@ class EditarCelularWindow extends TransactionalDialog<Celular> {
 	}
 
 	def getRepoModelos() {
-		ApplicationContext.instance.getSingleton(typeof(Modelo)) as RepoModelos
+		ApplicationContext.instance.getSingleton(Modelo) as RepoModelos
 	}
 	
 }
