@@ -197,7 +197,12 @@ class BuscarCelularesWindow extends SimpleWindow<BuscadorCelular> {
 
 	def void modificarCelular() {
 		new EditarCelularWindow(this, modelObject.celularSeleccionado) => [
-			onAccept[this.modelObject.actualizarSeleccionado()]
+			onAccept[
+				this.modelObject => [
+					actualizarSeleccionado
+					search
+				]
+			]
 			open
 		]
 	}
